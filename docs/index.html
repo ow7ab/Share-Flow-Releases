@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    http-equiv="Content-Security-Policy"
+    content="default-src 'self'; connect-src 'self' https://api.github.com https:; img-src 'self' data:; style-src 'self'; script-src 'self'; object-src 'none'; base-uri 'self';"
+  />
+  <meta name="theme-color" content="#0A1821" />
+  <meta
+    name="description"
+    content="Share Flow — الموقع الرسمي ومركز تحميل وتحديثات تطبيق مشاركة الملفات لأندرويد بدون إعلانات وبسرعة عالية عبر Wi-Fi وQR."
+  />
+  <link rel="icon" type="image/png" href="assets/shareflow-icon.png" />
+  <title>Share Flow — الموقع الرسمي وتحميل أندرويد</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Ambient Liquid Glass Lighting Backdrop -->
+  <div class="ambient-bg" aria-hidden="true">
+    <span class="ambient-orb orb-royal"></span>
+    <span class="ambient-orb orb-sky"></span>
+    <span class="ambient-orb orb-gold"></span>
+  </div>
+
+  <!-- Floating Glass Header -->
+  <header class="site-header">
+    <nav class="glass-nav container" aria-label="Primary Navigation">
+      <a href="#top" class="brand" aria-label="Share Flow Home">
+        <img
+          src="assets/shareflow-icon.png"
+          alt="Share Flow"
+          class="brand-logo"
+          width="44"
+          height="44"
+        />
+        <div class="brand-text">
+          <span class="brand-title">Share Flow</span>
+          <span class="brand-subtitle" id="brand-subtitle">مشاركة ملفات سريعة بلا إعلانات • أندرويد</span>
+        </div>
+      </a>
+
+      <div class="nav-links" id="nav-links">
+        <a href="#features" id="nav-features">المميزات</a>
+        <a href="#screenshots" id="nav-gallery">واجهة التطبيق</a>
+        <a href="#releases" id="nav-releases">الإصدارات</a>
+        <a href="#faq" id="nav-faq">الأسئلة الشائعة</a>
+      </div>
+
+      <button type="button" id="lang-toggle" class="glass-pill-btn" aria-label="Switch Language">English</button>
+    </nav>
+  </header>
+
+  <main id="top" class="container">
+    <!-- 1. HERO SECTION -->
+    <section class="hero-grid" aria-labelledby="hero-title">
+      <div class="hero-content glass-panel">
+        <div class="hero-badges">
+          <span class="pill-badge badge-gold" id="hero-eyebrow">هل مللت من الإعلانات المزعجة في تطبيقات مشاركة الملفات؟</span>
+          <span class="pill-badge badge-sky" id="official-badge">الموقع الرسمي • خالي تماماً من الإعلانات</span>
+        </div>
+
+        <h1 id="hero-title">جرّب Share Flow. شارك ملفاتك بسهولة، بسرعة، وبتجربة أكثر راحة.</h1>
+
+        <p class="hero-desc" id="hero-desc">
+          تجربة مشاركة ملفات مصممة لتكون بسيطة وسلسة، دون تشتيت غير ضروري. انقل الصور والفيديوهات والتطبيقات والمستندات مباشرة عبر Wi-Fi ورمز QR بلا إنترنت.
+        </p>
+
+        <div class="hero-cta-row">
+          <a
+            id="download-apk-btn"
+            class="btn-primary-gold"
+            aria-disabled="true"
+            rel="noopener noreferrer"
+          >جاري تجهيز تحميل Share Flow…</a>
+
+          <a href="#features" id="discover-features-btn" class="btn-glass-secondary">
+            اكتشف المميزات
+          </a>
+        </div>
+
+        <div id="download-feedback" class="download-feedback hidden" role="status" aria-live="polite"></div>
+
+        <!-- Live Release Status & Download Telemetry -->
+        <div class="release-console">
+          <div id="status-banner" class="status-banner status-loading" role="status" aria-live="polite">
+            <span id="status-spinner" class="spinner" aria-hidden="true"></span>
+            <span id="status-text">جاري التحقق من أحدث إصدار رسمي موقّع (Share-Flow.apk)…</span>
+          </div>
+
+          <p id="private-hint" class="status-subhint hidden"></p>
+
+          <div class="utility-actions">
+            <button type="button" id="retry-btn" class="btn-glass-small hidden">إعادة الفحص</button>
+            <button type="button" id="copy-sha-btn" class="btn-glass-small hidden">نسخ SHA-256</button>
+          </div>
+
+          <div class="meta-grid">
+            <div class="meta-card">
+              <span class="meta-label" id="meta-version-label">رقم الإصدار</span>
+              <span class="meta-value" id="meta-version-value">…</span>
+            </div>
+            <div class="meta-card">
+              <span class="meta-label" id="meta-size-label">حجم الملف</span>
+              <span class="meta-value" id="meta-size-value">…</span>
+            </div>
+            <div class="meta-card">
+              <span class="meta-label" id="meta-updated-label">تاريخ آخر تحديث</span>
+              <span class="meta-value" id="meta-updated-value">…</span>
+            </div>
+            <div class="meta-card">
+              <span class="meta-label" id="meta-package-label">صيغة التثبيت</span>
+              <span class="meta-value" id="meta-package-value">Share-Flow.apk (مباشر بدون ZIP)</span>
+            </div>
+          </div>
+
+          <div class="meta-card hidden" id="meta-sha-card">
+            <span class="meta-label" id="meta-sha-label">بصمة التحقق الأمني SHA-256</span>
+            <span class="meta-value mono" id="meta-sha-value"></span>
+          </div>
+
+          <div class="meta-card release-notes-card hidden" id="release-notes-card">
+            <span class="meta-label" id="release-notes-label">سجل التغييرات في هذا الإصدار</span>
+            <ul class="changelog-list" id="release-notes-list"></ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Visual Spotlight Card -->
+      <aside class="hero-visual glass-panel" aria-label="Share Flow Visual Preview">
+        <div class="visual-stage">
+          <img
+            src="assets/shareflow-hero.jpg"
+            alt="Share Flow Local Transfer Engine"
+            class="visual-backdrop"
+            loading="eager"
+          />
+          <div class="visual-overlay">
+            <img
+              src="assets/shareflow-icon.png"
+              alt="Share Flow Logo"
+              class="spotlight-icon"
+              width="96"
+              height="96"
+            />
+            <h2 class="spotlight-title">Share Flow</h2>
+            <p class="spotlight-tagline" id="spotlight-tagline">
+              نقل محلي مشفّر • تثبيت مباشر • تحديث تلقائي
+            </p>
+            <div class="spotlight-chips">
+              <span class="mini-chip" id="chip-adfree">0% إعلانات</span>
+              <span class="mini-chip" id="chip-offline">بدون إنترنت</span>
+              <span class="mini-chip" id="chip-encrypted">AES-256-GCM</span>
+              <span class="mini-chip" id="chip-android">Android 7.0+</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="auto-update-pill">
+          <span class="pulse-dot" aria-hidden="true"></span>
+          <span id="auto-update-note">
+            متصل تلقائياً بالتطبيق عبر version.json — لا حاجة لإدخال أي رابط يدوياً.
+          </span>
+        </div>
+      </aside>
+    </section>
+
+    <!-- 2. FEATURES SECTION -->
+    <section id="features" class="section-block" aria-labelledby="features-heading">
+      <div class="section-head">
+        <span class="section-kicker" id="features-kicker">مميزات حقيقية مبنية داخل التطبيق</span>
+        <h2 id="features-heading">لماذا يختار المستخدمون Share Flow؟</h2>
+        <p id="features-lead">كل ميزة هنا موجودة فعلياً داخل تطبيق أندرويد ومصممة لراحتك وخصوصيتك.</p>
+      </div>
+
+      <div class="features-grid">
+        <article class="glass-card feature-card">
+          <div class="feature-icon icon-blue" aria-hidden="true">⇄</div>
+          <h3 id="feat-title-1">إرسال واستقبال محلي فائق السرعة</h3>
+          <p id="feat-desc-1">شارك ملفاتك مباشرة عبر Wi-Fi المحلي أو Wi-Fi Direct أو نقطة الاتصال دون استهلاك رصيد الإنترنت.</p>
+        </article>
+
+        <article class="glass-card feature-card">
+          <div class="feature-icon icon-gold" aria-hidden="true">✦</div>
+          <h3 id="feat-title-2">تجربة نظيفة خالية تماماً من الإعلانات</h3>
+          <p id="feat-desc-2">لا إعلانات منبثقة ولا شاشات مزعجة — افتح التطبيق وابدأ الإرسال أو الاستقبال مباشرة بتركيز كامل.</p>
+        </article>
+
+        <article class="glass-card feature-card">
+          <div class="feature-icon icon-sky" aria-hidden="true">▣</div>
+          <h3 id="feat-title-3">ربط فوري عبر رمز QR</h3>
+          <p id="feat-desc-3">امسح رمز QR من الجهاز المستقبِل ليتم الاتصال فوراً بوضوح وأمان دون إعدادات معقدة.</p>
+        </article>
+
+        <article class="glass-card feature-card">
+          <div class="feature-icon icon-blue" aria-hidden="true">▤</div>
+          <h3 id="feat-title-4">دعم شامل لجميع أنواع ملفاتك</h3>
+          <p id="feat-desc-4">يدعم الصور، الفيديوهات، الصوتيات، المستندات، المجلدات، والتطبيقات المثبّتة (بما فيها Split APKs).</p>
+        </article>
+
+        <article class="glass-card feature-card">
+          <div class="feature-icon icon-gold" aria-hidden="true">◈</div>
+          <h3 id="feat-title-5">أمان وتشفير وخصوصية عالية</h3>
+          <p id="feat-desc-5">تشفير AES-256-GCM أثناء النقل، تحقق SHA-256 لسلامة كل ملف، وخزنة خاصة محمية بقفل الجهاز.</p>
+        </article>
+
+        <article class="glass-card feature-card">
+          <div class="feature-icon icon-sky" aria-hidden="true">↻</div>
+          <h3 id="feat-title-6">تحديثات تلقائية آمنة من داخل التطبيق</h3>
+          <p id="feat-desc-6">اضغط «التحقق من التحديثات» داخل الإعدادات ليفحص التطبيق أحدث إصدار ويتحقق من SHA-256 والشهادة تلقائياً.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- 3. VISUAL GALLERY & REAL APP MODULES SECTION -->
+    <section id="screenshots" class="section-block" aria-labelledby="gallery-heading">
+      <div class="section-head">
+        <span class="section-kicker" id="gallery-kicker">الهوية ولقطات المشروع</span>
+        <h2 id="gallery-heading">معرض صور ومكونات Share Flow</h2>
+        <p id="gallery-lead">اضغط على أي صورة للتكبير والتنقل بينها بوضوح. تُعرض فقط الأصول واللقطات الحقيقية للمشروع.</p>
+      </div>
+
+      <div id="gallery-grid" class="gallery-grid" aria-live="polite"></div>
+
+      <div class="screens-summary-grid">
+        <div class="glass-card module-pill-card">
+          <strong id="mod-1-title">الرئيسية (إرسال / استقبال)</strong>
+          <span id="mod-1-desc">وصول فوري لزرَي الإرسال والاستقبال وآخر التحويلات من أعلى الشاشة.</span>
+        </div>
+        <div class="glass-card module-pill-card">
+          <strong id="mod-2-title">مدير الملفات والوسائط والتطبيقات</strong>
+          <span id="mod-2-desc">تصفح منظم للصور، الفيديوهات، الموسيقى، المستندات، والتطبيقات المثبّتة.</span>
+        </div>
+        <div class="glass-card module-pill-card">
+          <strong id="mod-3-title">الأدوات والخزنة الخاصة</strong>
+          <span id="mod-3-desc">محلل التخزين، الخزنة المشفّرة، ومشغل الوسائط المدمج داخل التطبيق.</span>
+        </div>
+        <div class="glass-card module-pill-card">
+          <strong id="mod-4-title">الإعدادات والتحديث السحابي</strong>
+          <span id="mod-4-desc">تبديل اللغة والمظهر والتحقق التلقائي من تحديثات Share Flow بضغطة واحدة.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. INSTALL STEPS & RELEASE HISTORY SECTION -->
+    <section id="releases" class="section-block two-col-grid" aria-labelledby="install-title">
+      <article class="glass-panel panel-pad">
+        <h2 id="install-title">خطوات التثبيت والتحديث الآمن على أندرويد</h2>
+        <ol class="steps-list">
+          <li id="inst-1">اضغط زر «تحميل Share Flow» لتنزيل ملف Share-Flow.apk مباشرة دون أي ملفات ZIP.</li>
+          <li id="inst-2">افتح ملف Share-Flow.apk فور اكتمال التحميل من إشعارات المتصفح أو مجلد التنزيلات.</li>
+          <li id="inst-3">عند الطلب لأول مرة، اسمح بتثبيت التطبيقات من هذا المصدر في إعدادات Android.</li>
+          <li id="inst-4">في التحديثات اللاحقة يمكنك التحديث مباشرة من داخل الإعدادات أو من هذا الموقع مع الحفاظ على بياناتك.</li>
+        </ol>
+      </article>
+
+      <article class="glass-panel panel-pad" aria-labelledby="history-title">
+        <h2 id="history-title">سجل الإصدارات السابقة</h2>
+        <p class="section-subcopy" id="history-subtitle">تتحدّث هذه القائمة تلقائياً مع كل إصدار رسمي موقّع جديد.</p>
+        <div id="history-list" class="history-list"></div>
+      </article>
+    </section>
+
+    <!-- 5. FAQ SECTION -->
+    <section id="faq" class="section-block" aria-labelledby="faq-heading">
+      <div class="section-head">
+        <span class="section-kicker" id="faq-kicker">إجابات واضحة ومباشرة</span>
+        <h2 id="faq-heading">الأسئلة الشائعة</h2>
+      </div>
+
+      <div class="faq-list">
+        <details class="glass-card faq-item" open>
+          <summary id="faq-q1">ما هو Share Flow؟</summary>
+          <p id="faq-a1">تطبيق أندرويد سريع وآمن لمشاركة الصور والفيديوهات والمستندات والتطبيقات والمجلدات محلياً عبر شبكة Wi-Fi ورمز QR دون إنترنت، مع تشفير AES-256-GCM وبدون أي إعلانات.</p>
+        </details>
+
+        <details class="glass-card faq-item">
+          <summary id="faq-q2">كيف أحمل التطبيق؟</summary>
+          <p id="faq-a2">اضغط زر «تحميل Share Flow» في أعلى هذه الصفحة ليبدأ تنزيل ملف Share-Flow.apk مباشرة، ثم افتحه لتثبيته على جهازك الأندرويد.</p>
+        </details>
+
+        <details class="glass-card faq-item">
+          <summary id="faq-q3">هل التطبيق مجاني وخالي من الإعلانات؟</summary>
+          <p id="faq-a3">نعم، تطبيق Share Flow مجاني بالكامل وخالي تماماً من الإعلانات ولا يحتوي على أي مكتبات إعلانية.</p>
+        </details>
+
+        <details class="glass-card faq-item">
+          <summary id="faq-q4">كيف أستقبل الملفات؟</summary>
+          <p id="faq-a4">افتح التطبيق واضغط «استقبال» من الشاشة الرئيسية ليظهر رمز QR وجاهزية الاستقبال المحلي، ثم يقوم المرسِل بمسح الرمز أو اختيار جهازك لبدء النقل فوراً.</p>
+        </details>
+
+        <details class="glass-card faq-item">
+          <summary id="faq-q5">كيف أتحقق من وجود تحديث؟</summary>
+          <p id="faq-a5">من داخل تطبيق Share Flow انتقل إلى تبويب «الإعدادات» ثم اضغط «التحقق من التحديثات». سيفحص التطبيق ملف version.json الرسمي تلقائياً، وإذا وُجد إصدار أحدث سيعرض لك رقم الإصدار وسجل التغييرات وزر التنزيل والتحقق والتثبيت.</p>
+        </details>
+
+        <details class="glass-card faq-item">
+          <summary id="faq-q6">هل أحتاج إلى إدخال رابط التحديث يدوياً؟</summary>
+          <p id="faq-a6">لا إطلاقاً. رابط التحديث الرسمي مدمج ومضبوط تلقائياً داخل التطبيق، ويكفي الضغط على زر التحقق من التحديثات فقط.</p>
+        </details>
+
+        <details class="glass-card faq-item">
+          <summary id="faq-q7">ماذا أفعل إذا فشل تثبيت التحديث؟</summary>
+          <p id="faq-a7">تأكد أولاً من تفعيل إذن «تثبيت التطبيقات غير المعروفة» لـ Share Flow أو المتصفح وتوفر مساحة تخزين كافية. وإذا كانت النسخة القديمة على جهازك نسخة اختبارية قديمة (Debug) وتنتقل لأول مرة إلى النسخة الرسمية، احذف النسخة التجريبية مرة واحدة ثم ثبّت النسخة الرسمية لتعمل جميع التحديثات التالية تلقائياً فوقها.</p>
+        </details>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="footer-inner glass-panel">
+        <div class="footer-brand">
+          <img src="assets/shareflow-icon.png" alt="Share Flow" width="32" height="32" class="footer-icon" />
+          <span id="footer-text">Share Flow — ملفاتك على أجهزتك وتحت تحكمك الكامل.</span>
+        </div>
+        <span class="footer-meta" id="footer-meta">HTTPS • Direct Signed APK • Zero Ads</span>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Interactive Lightbox Modal for Gallery -->
+  <div id="lightbox" class="lightbox hidden" role="dialog" aria-modal="true" aria-labelledby="lightbox-title">
+    <div class="lightbox-backdrop" id="lightbox-backdrop"></div>
+    <div class="lightbox-dialog glass-panel">
+      <button type="button" id="lightbox-close" class="lightbox-close" aria-label="Close">✕</button>
+      <div class="lightbox-media-wrap">
+        <button type="button" id="lightbox-prev" class="lightbox-nav" aria-label="Previous">‹</button>
+        <img id="lightbox-img" src="" alt="" class="lightbox-img" />
+        <button type="button" id="lightbox-next" class="lightbox-nav" aria-label="Next">›</button>
+      </div>
+      <div class="lightbox-caption">
+        <h3 id="lightbox-title"></h3>
+        <p id="lightbox-desc"></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
